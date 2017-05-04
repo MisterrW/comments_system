@@ -12,8 +12,9 @@ class Comment extends React.Component {
     var commentAuthor = this.props.comment.userName
     console.log(commentAuthor)
     return <div>
-      <p> { commentAuthor } </p>
+      <h3> { commentAuthor } </h3>
       <p> { commentText } </p>
+      <button class="reply-button">Reply</button>
     </div>
   }
 }
