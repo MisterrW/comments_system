@@ -1,12 +1,30 @@
-module.exports = {
-  entry: './src/main.js',
+var path = require('path');
+
+var config = {
+  entry: path.join( __dirname + "/src/main.js"),
   output: {
-    filename: './build/bundle.js'
+    path: path.join( __dirname + "/build/"),
+    filename: "bundle.js"
+  },
+  devtool: "source-map",
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
   module: {
-    loaders: [
-      {test: /\.js$/, loader: 'babel-loader', exclude: '/node_modules/'},
-      {test: /\.jsx$/, loader: 'babel-loader', exclude: '/node_modules'}
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015']
+        }
+      }
     ]
-  }
+  },
+  node: {
+  fs: "empty"
 }
+}
+
+module.exports = config;
