@@ -24,3 +24,14 @@ Recommend comment
 Reply to a comment
 Edit a comment
 Authentication and login
+
+
+DB structure (mongodb)
+
+Collections:
+Articles
+Comments
+Users?
+
+Comments contain an article id, which matches the article's object_id (_id)
+ONCE AUTH WORKS Comments also contain a user id, which matches the user's object_id (_id)
