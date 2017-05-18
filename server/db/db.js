@@ -25,6 +25,9 @@ DbConnector.prototype = {
       db.collection(collection_name).find(query).toArray(function(err, result){
         if(!err){
           console.log("query complete");
+          console.log(query);
+          console.log(collection_name);
+          console.log(result);
           callback(result);
         }
         db.close();

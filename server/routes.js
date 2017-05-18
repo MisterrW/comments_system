@@ -1,16 +1,15 @@
 var express = require('express');
 var routes = express.Router();
 var ArticleController = require('./controllers/articles');
-
-var articleController = new ArticleController();
+var CommentController = require('./controllers/comments');
 
 routes.get('/', function(req, res){
   console.log('connected!');
-})
+  res.json({'working': 'true'})
+});
 
-routes.get('/article', function(req, res){
-  console.log('connected!');
-})
+routes.use('/articles', ArticleController);
+module.exports = routes;
 
-routes.use('/article', articleController);
+routes.use('/comments', CommentController);
 module.exports = routes;

@@ -22,18 +22,11 @@ var testFind = function(){
 }
 
 var add_comment = function(article_title, comment_data){
-  console.log("in add_comment");
-  console.log(article_title);
-  console.log(comment_data);
   dbConnector.find('articles', {"title": article_title}, function(results){
-      console.log("hello!")
       var article_id = results[0]._id;
-      console.log(article_id);
       comment_data.article_id = article_id;
-      console.log(comment_data);
       dbConnector.insert('comments', comment_data, function(){
         dbConnector.find('comments', {}, function(data){
-          console.log(data);
         });
       });
   })
@@ -46,7 +39,8 @@ var seed_articles = function(callback){
 }
 
 var seed_comments = function(){
-  add_comment("Some fascinating creatures 2", {"author": "Flora", "body": "Koshka is more fun"})
+  add_comment("Some fascinating creatures 2", {"author": "Flora", "body": "Article about Mishkin"})
+  add_comment("Some fascinating creatures", {"author": "Will", "body": "Article about Koshka"})
 }
 
 seed_articles(seed_comments)
