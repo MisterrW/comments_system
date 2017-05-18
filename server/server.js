@@ -1,12 +1,12 @@
 var express = require('express');
-
-var app = express();
+var routes = require('./routes')
 
 var DbConnector = require('./db/db.js')
 dbConnector = new DbConnector()
 
-// app.listen(8000, function(){
-//   console.log('API server is running')
-// })
+var app = express();
+app.use('/', routes);
 
-// app.get()
+app.listen(8000, function(){
+  console.log('API server is running')
+})

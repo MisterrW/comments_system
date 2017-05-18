@@ -1,11 +1,11 @@
-var DbConnector = require('./db/db.js');
+var DbConnector = require('./db.js');
 var dbConnector = new DbConnector();
 
 var drop = function(collection_name){
   dbConnector.connect(function(db){
     db.collection(collection_name).drop(function(err, result){
       if(!err){
-        // console.log(collection_name + " dropped");
+        console.log(collection_name + " dropped");
       }
       db.close();
     });
